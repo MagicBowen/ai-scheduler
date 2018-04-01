@@ -1,5 +1,5 @@
 {
-  "name": "ai scheduler",
+  "name": "ai-scheduler",
   "version": "1.0.0",
   "description": "我的课表",
   "main": "app.js",
