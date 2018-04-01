@@ -14,7 +14,7 @@ router.use('/', function(req, res, next) {
     if(requestType==="Start"){
         message=messageBuilder.buildResponseSimple("欢迎进入我的课表",false);
     }else{
-        message=messageBuilder.buildResponse(["小主，您还没有录入课程信息呢"],true);
+        message=messageBuilder.buildResponse(["尉刚强同学，您还没有录入任何课程信息呢"],true);
     }
     console.log(message);
     res.json(message);
