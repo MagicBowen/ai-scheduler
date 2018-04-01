@@ -5,7 +5,7 @@ const fs = require('fs');
 
 var app = express();
 app.use(bodyParser.json());
-app.use("/",require("./myroute"));
+app.use("/",require("./route"));
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
