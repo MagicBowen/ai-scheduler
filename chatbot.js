@@ -18,13 +18,15 @@ function asyncPost(data) {
 async function replyToText(userId, text) {
     var data = { query : { query : text, confidence : 1.0 }, session : userId, agent : agent };
     var response = await asyncPost(data)
-    console.log('Text: ' + JSON.stringify(response));  
+    console.log('Text: ' + JSON.stringify(response));
+    return response;  
 }
 
 async function replyToEvent(userId, eventType) {
     var data = { event : { name : eventType }, session : userId, agent : agent };
     var response = await asyncPost(data)
     console.log('Event: ' + JSON.stringify(response));
+    return response;
 }
 
 module.exports={
