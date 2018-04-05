@@ -10,11 +10,15 @@ router.use('/', async function(req, res, next) {
     console.log(body);
 
     const userId = _.get(body,"request.intent.session.user.user_id")
+    console.log(userId);
     const query=_.get(body,"request.intent.query");
+    console.log(query);
     const requestType = _.get(body,"request.intent.request_type");
+    console.log(requestType);
 
     var message;
     if(requestType==="Start"){
+        console.log("Start");
         var response = await chatbot.replyToEvent(userId, 'open-app');
         message=messageBuilder.buildResponseSimple(response, false);
     } else if(requestType==="End"){
