@@ -10,15 +10,10 @@ router.use('/', async function(req, res, next) {
     console.log(body);
 
     const userId = _.get(body,"session.user.user_id")
-    console.log(userId);
     const query=_.get(body,"query");
-    console.log(query);
     const requestType = _.get(body,"request.type");
-    console.log(requestType);
     const noResponse = _.get(body,"request.no_response");
-    console.log(noResponse)
     const directWakeup = _.get(body,"request.intent.is_direct_wakeup");
-    console.log(directWakeup)
 
     var message;
     if(noResponse){
@@ -26,7 +21,6 @@ router.use('/', async function(req, res, next) {
         message=messageBuilder.buildResponseSimple(response, false);
     } else {
         if(requestType===0){
-            console.log("Start");
             var response;
             if(directWakeup && query)
             {
@@ -36,7 +30,6 @@ router.use('/', async function(req, res, next) {
             }
             message=messageBuilder.buildResponseSimple(response, false);
         } else if(requestType===2){
-            console.log("End");
             var response = await chatbot.replyToEvent(userId, 'close-app');
             message=messageBuilder.buildResponseSimple(response, false);
         } else{
