@@ -9,11 +9,11 @@ router.use('/', async function(req, res, next) {
     const body=req.body;
     console.log(body);
 
-    const userId = _.get(body,"request.intent.session.user.user_id")
+    const userId = _.get(body,"rsession.user.user_id")
     console.log(userId);
-    const query=_.get(body,"request.intent.query");
+    const query=_.get(body,"query");
     console.log(query);
-    const requestType = _.get(body,"request.intent.request_type");
+    const requestType = _.get(body,"request.type");
     console.log(requestType);
 
     var message;
