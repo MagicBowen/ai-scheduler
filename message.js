@@ -18,7 +18,7 @@ const responseTemplate = {
             }
         ]
     },
-    "is_session_end": true // (boolean required)e
+    "is_session_end": true // (boolean required)
 };
 
 function buildResponseSimple(message,is_session_end=true,session_attributes={}){

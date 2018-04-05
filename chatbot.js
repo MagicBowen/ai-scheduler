@@ -1,15 +1,33 @@
 request = require('request-json');
+var client = request.createClient('http://47.100.99.213:6060');
 
 const agent = 'course-record';
-const url = 'http://47.100.99.213';
 
-function request(userId, query) {
-    var data = { query : { query : '', confidence : 1.0 }, session : '', agent : agent };
-    data.query.query = query;
-    data.session = userId;
-
-    var client = request.newClient(url);
-    client.post('query', data, function(err, res, body) {
-      console.log(res.statusCode, body);
+function asyncPost(data) {
+    return new Promise(function (resolve, reject) {
+        client.post('query', data, function (error, res, body) {
+        if (!error && res.statusCode == 200) {
+          resolve(body.reply[0]);
+        } else {
+          reject(error);
+        }
+      });
     });
+  }
+
+async function replyToText(userId, text) {
+    var data = { query : { query : text, confidence : 1.0 }, session : userId, agent : agent };
+    var response = await asyncPost(data)
+    console.log('Text: ' + JSON.stringify(response));  
+}
+
+async function replyToEvent(userId, eventType) {
+    var data = { event : { name : eventType }, session : userId, agent : agent };
+    var response = await asyncPost(data)
+    console.log('Event: ' + JSON.stringify(response));
+}
+
+module.exports={
+    replyToText,
+    replyToEvent
 }
