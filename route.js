@@ -9,7 +9,7 @@ router.use('/', async function(req, res, next) {
     const body=req.body;
     console.log(body);
 
-    const userId = _.get(body,"rsession.user.user_id")
+    const userId = _.get(body,"session.user.user_id")
     console.log(userId);
     const query=_.get(body,"query");
     console.log(query);
