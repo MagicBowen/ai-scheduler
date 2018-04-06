@@ -19,7 +19,7 @@ router.use('/', async function(req, res, next) {
     if(noResponse){
         var response = await chatbot.replyToEvent(userId, 'no-response');
         console.log("receive no-response event\n")
-        message=messageBuilder.buildResponseSimple(response, false);
+        message=messageBuilder.buildResponseSimple(response, true);
     } else {
         if(requestType===0){
             var response;
@@ -36,13 +36,12 @@ router.use('/', async function(req, res, next) {
         } else if(requestType===2){
             console.log("receive close-app event")
             var response = await chatbot.replyToEvent(userId, 'close-app');
-            message=messageBuilder.buildResponseSimple(response, false);
+            message=messageBuilder.buildResponseSimple(response, true);
         } else{
             console.log("receive other requestType" + requestType + "query is: ==>" + query)
             var response = await chatbot.replyToText(userId, query);
             
             message=messageBuilder.buildResponseSimple(response, false);
-            // message=messageBuilder.buildResponse([response],true);
         }
     }
 
