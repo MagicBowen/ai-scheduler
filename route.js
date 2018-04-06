@@ -18,23 +18,31 @@ router.use('/', async function(req, res, next) {
     var message;
     if(noResponse){
         var response = await chatbot.replyToEvent(userId, 'no-response');
+        console.log("receive no-response event\n")
         message=messageBuilder.buildResponseSimple(response, false);
     } else {
         if(requestType===0){
             var response;
             if(directWakeup && query)
             {
+                console.log("receive query :==>" + query )
                 response = await chatbot.replyToText(userId, query);
             } else {
+
+                console.log("receive open-app event")
                 response = await chatbot.replyToEvent(userId, 'open-app');
             }
             message=messageBuilder.buildResponseSimple(response, false);
         } else if(requestType===2){
+            console.log("receive close-app event")
             var response = await chatbot.replyToEvent(userId, 'close-app');
             message=messageBuilder.buildResponseSimple(response, false);
         } else{
+            console.log("receive other requestType" + requestType + "query is: ==>" + query)
             var response = await chatbot.replyToText(userId, query);
-            message=messageBuilder.buildResponse([response],true);
+            
+            message=messageBuilder.buildResponseSimple(response, false);
+            // message=messageBuilder.buildResponse([response],true);
         }
     }
 
