@@ -50,10 +50,10 @@ router.use('/', async function(req, res, next) {
                 message=messageBuilder.buildResponseSimple(response, false);    
             }
         }
-
-      console.log(message);
-      res.json(message);
     }
+
+    console.log(message);
+    res.json(message);
  });
 
 
