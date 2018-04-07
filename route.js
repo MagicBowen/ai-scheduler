@@ -40,8 +40,13 @@ router.use('/', async function(req, res, next) {
         } else{
             console.log("receive other requestType" + requestType + "query is: ==>" + query)
             var response = await chatbot.replyToText(userId, query);
-            
-            message=messageBuilder.buildResponseSimple(response, false);
+
+            if(response.indexOf("我离开了") != -1){
+                message=messageBuilder.buildResponseSimple(response, true);    
+            }
+            else {
+                message=messageBuilder.buildResponseSimple(response, false);    
+            }
         }
     }
 
