@@ -19,12 +19,7 @@ router.use('/', async function(req, res, next) {
     if(noResponse){
         var response = await chatbot.replyToEvent(userId, 'no-response');
         console.log("receive no-response event\n")
-        if(response.indexOf("我离开了") != -1){
-            message=messageBuilder.buildResponseSimple(response, true);    
-        }
-        else {
-            message=messageBuilder.buildResponseSimple(response, false);    
-        }
+        message=messageBuilder.buildResponseSimple(response, false);
 
     } else {
         if(requestType===0){
