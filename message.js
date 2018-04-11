@@ -26,6 +26,7 @@ function buildResponseSimple(message,is_session_end=true,session_attributes={}){
     response.is_session_end=is_session_end;
     response.session_attributes=session_attributes;
     response.response.to_speak.text=message;
+    response.response.open_mic= !is_session_end;
     delete response.response.directives;
     return response;
 }
