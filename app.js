@@ -26,6 +26,8 @@ const options = {
   cert: fs.readFileSync('./keys/1522555444697.pem')
 };
 
+// app.listen(8000)
+// console.log('My scheduler listening at http://%s:%s', "127.0.0.1", "8000");
 // const options = {};
 
 const httpsServer = https.createServer(options, app);
