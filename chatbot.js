@@ -1,5 +1,5 @@
 request = require('request-json');
-var client = request.createClient('http://47.100.99.213:6060');
+var client = request.createClient('http://47.100.20.55');
 
 const agent = 'course-record';
 
