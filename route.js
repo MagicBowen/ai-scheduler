@@ -18,8 +18,6 @@ router.use('/', async function(req, res, next) {
 
     userContext = {"access_token": access_token}
 
-    console.log("access_token is", access_token)
-
     var message;
     if(noResponse){
         var response = await chatbot.replyToEvent(userId, 'no-response');
