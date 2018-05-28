@@ -1,8 +1,11 @@
 request = require('request-json');
-var client = request.createClient('http://47.100.20.55');
+args = require("./paras")
+
+var client = request.createClient('http://' + args.getChatBotIp());
+
+console.log("connect to chatbot dm client:" + args.getChatBotIp())
 
 const agent = 'course-record';
-
 function concatReplies(replies) {
     var result = '';
     for(var i = 0; i < replies.length; i++) {

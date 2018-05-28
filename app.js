@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 const https = require('https');
 const fs = require('fs');
+args = require("./paras");
 
 var app = express();
 app.use(bodyParser.json());
@@ -26,13 +27,13 @@ const options = {
   cert: fs.readFileSync('./keys/1522555444697.pem')
 };
 
-// app.listen(8000)
-// console.log('My scheduler listening at http://%s:%s', "127.0.0.1", "8000");
-// const options = {};
+// // app.listen(8000)
+// console.log(args.getHttpsPort());
+// // const options = {};
 
 const httpsServer = https.createServer(options, app);
 
-httpsServer.listen(443, '0.0.0.0', function(){
+httpsServer.listen(args.getHttpsPort(), '0.0.0.0', function(){
   var host = httpsServer.address().address;
   var port = httpsServer.address().port;
   console.log('My scheduler listening at http://%s:%s', host, port);
