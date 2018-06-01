@@ -4,8 +4,9 @@ args = require("./paras")
 var client = request.createClient('http://' + args.getChatBotIp());
 
 console.log("connect to chatbot dm client:" + args.getChatBotIp())
+const agent = args.getAgent();
+console.log("start agent name:" + agent)
 
-const agent = 'course-record';
 function concatReplies(replies) {
     var result = '';
     for(var i = 0; i < replies.length; i++) {
